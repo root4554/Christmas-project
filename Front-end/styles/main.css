@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url("../assets/Aquire/Aquire-Light.otf");
+}
+.row {
+    margin: 0 !important;
+}
+.scrollspy-example-2 {
+    padding: 0px 10px 0px 10px;
+}
+.main {
+    width: 100%;
+    height: 100vh;
+    background: #000;
+}
+.menu,
+.content {
+    padding: 0;
+    padding-top: 30px;
+    color: #fff;
+}
+.sign,
+form {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-size: 50px;
+    font-weight: 300;
+    margin: 0;
+}
+.sign h1 {
+    margin-bottom: 20px;
+}
+label,
+input {
+    width: 100%;
+}
+input {
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+#submit {
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-bottom: 10vh;
+}
+#signInfoB {
+    background-color: transparent;
+    border: none;
+    color: white;
+    opacity: 1;
+    text-decoration: underline;
+}
+#signInfoP {
+    font-weight: 100;
+    opacity: 0.8;
+    margin-right: 5px;
+}
+.form-type {
+    display: flex;
+    align-items: baseline;
+}
+.hidden {
+    display: none;
+}
+.header h1,
+.header p {
+    font-family: myFirstFont !important;
+}
+.logos p {
+    opacity: 0.7;
+}
+.logos span {
+    color: red;
+    opacity: 1;
+    font-weight: bolder;
+}
+/* main  */
+.slide-track {
+    width: 100%;
+    height: 15vh;
+    background: #000;
+    display: flex;
+    overflow-y: hidden;
+}
+.slide {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.slide img {
+    height: 100%;
+    object-fit: cover;
+}
+.drag-section {
+    width: 70%;
+    height: 40vh;
+    background: #000;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 30px auto;
+}
+.drag-section h2 {
+    opacity: 0.8;
+    width: 100%;
+    text-align: center;
+}
+.drag-section svg {
+    width: 18px;
+    height: 18px;
+}
+.drag-section img {
+    width: 100px;
+}
+.data-button {
+    width: 80%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.data-button button {
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: no-drop;
+    padding: 5px 10px;
+    margin-bottom: 10vh;
+    opacity: 0.2;
+}

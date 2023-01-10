@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stock-Exchange</title>
+
+        <link
+            rel="stylesheet"
+            href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"
+        ></script>
+        <!-- // -->
+        <link rel="stylesheet" href="styles/main.css" />
+    </head>
+    <body>
+        <div class="main">
+            <div class="row h-100">
+                <div class="col-3 bg-dark menu">
+                    <div class="sign w-100">
+                        <h1 id="signInfoH">Sign up</h1>
+                        <form action="" class="sign-up">
+                            <label id="name-label" for="name">Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Enter your name"
+                            />
+                            <label for="email">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Enter your email"
+                            />
+                            <label for="password">Password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Enter your password"
+                            />
+                            <label id="password-label" for="confirm-password"
+                                >Confirm Password</label
+                            >
+                            <input
+                                type="password"
+                                name="confirm-password"
+                                id="confirm-password"
+                                placeholder="Confirm your password"
+                            />
+                            <button id="submit" type="submit">
+                                Create an account
+                            </button>
+                        </form>
+                        <div class="form-type">
+                            <p id="signInfoP">Already a member?</p>
+                            <button id="signInfoB">Sign In</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-8 content">
+                    <div
+                        data-bs-spy="scroll"
+                        data-bs-target="#navbar-example3"
+                        data-bs-smooth-scroll="true"
+                        class="scrollspy-example-2"
+                        tabindex="0"
+                    >
+                        <div class="header">
+                            <h1>Stock-Exchange</h1>
+                            <p>Get the latest stock market news</p>
+                        </div>
+                        <div class="logos">
+                            <p>
+                                <span>*</span>
+                                To show the companies stock prices click on the
+                                logo and drag it to the chart
+                            </p>
+                            <div class="slider">
+                                <div class="slide-track">
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="bbva"
+                                            src="assets/bbva-removebg-preview.png"
+                                            alt="bbva"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="cellnex"
+                                            src="assets/cellnex-removebg-preview.png"
+                                            alt="Cellnex"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="ferrovial"
+                                            src="assets/ferrovial-removebg-preview.png"
+                                            alt="Ferrovial"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="iberdrola"
+                                            src="assets/iberdrola-removebg-preview.png"
+                                            alt="Iberdrola"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="inditex"
+                                            src="assets/inditex-removebg-preview.png"
+                                            alt="Inditex"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="naturgy"
+                                            src="assets/Naturgy.svg.png"
+                                            alt="Naturgy"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="repsol"
+                                            src="assets/Repsol-Logo-500x283.png"
+                                            alt="Repsol"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="santander"
+                                            src="assets/santander-removebg-preview.png"
+                                            alt="Santander"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="telefonica"
+                                            src="assets/telefonica-logo.png"
+                                            alt="telefonica"
+                                        />
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            draggable="true"
+                                            id="caixa"
+                                            src="assets/caixa-removebg-preview.png"
+                                            alt="Caixa"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="drag-section"
+                            id="drag-section"
+                            ondrop="drop(event)"
+                            ondragover="allowDrop(event)"
+                        >
+                            <h2>Drag the logo to the chart</h2>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-arrow-down-left-square-fill"
+                                viewBox="0 0 16 16"
+                            >
+                                <path
+                                    d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm8.096-10.803L6 9.293V6.525a.5.5 0 0 0-1 0V10.5a.5.5 0 0 0 .5.5h3.975a.5.5 0 0 0 0-1H6.707l4.096-4.096a.5.5 0 1 0-.707-.707z"
+                                />
+                            </svg>
+                        </div>
+                        <div class="data-button">
+                            <button id="data-button" disabled>Show data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/logic.js"></script>
+    </body>
+</html>
