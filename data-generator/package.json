@@ -1,0 +1,17 @@
+{
+  "name": "data-generator",
+  "version": "1.0.0",
+  "main": "generate-data.js",
+  "type": "module",
+  "scripts": {
+    "start": "node generate-data.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "mysql2": "^3.0.1"
+  }
+}

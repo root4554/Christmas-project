@@ -114,7 +114,7 @@ input {
     height: 100%;
     object-fit: cover;
 }
-.drag-section {
+.drop-section {
     width: 70%;
     height: 40vh;
     background: #000;
@@ -127,16 +127,18 @@ input {
     flex-wrap: wrap;
     margin: 30px auto;
 }
-.drag-section h2 {
+.drop-section h2 {
     opacity: 0.8;
     width: 100%;
     text-align: center;
+    pointer-events: none;
 }
-.drag-section svg {
-    width: 18px;
-    height: 18px;
+.drop-section svg {
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
 }
-.drag-section img {
+.drop-section img {
     width: 100px;
 }
 .data-button {

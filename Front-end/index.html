@@ -91,82 +91,75 @@
                                 logo and drag it to the chart
                             </p>
                             <div class="slider">
-                                <div class="slide-track">
-                                    <div class="slide">
+                                <div class="slide-track dp-section">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="bbva"
                                             src="assets/bbva-removebg-preview.png"
                                             alt="bbva"
+                                            ondrop="return false;"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="cellnex"
                                             src="assets/cellnex-removebg-preview.png"
                                             alt="Cellnex"
+                                            ondrop="return false;"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="ferrovial"
                                             src="assets/ferrovial-removebg-preview.png"
                                             alt="Ferrovial"
+                                            ondrop="return false;"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="iberdrola"
                                             src="assets/iberdrola-removebg-preview.png"
                                             alt="Iberdrola"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="inditex"
                                             src="assets/inditex-removebg-preview.png"
                                             alt="Inditex"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="naturgy"
                                             src="assets/Naturgy.svg.png"
                                             alt="Naturgy"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="repsol"
                                             src="assets/Repsol-Logo-500x283.png"
                                             alt="Repsol"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="santander"
                                             src="assets/santander-removebg-preview.png"
                                             alt="Santander"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="telefonica"
                                             src="assets/telefonica-logo.png"
                                             alt="telefonica"
                                         />
                                     </div>
-                                    <div class="slide">
+                                    <div class="slide" draggable="true">
                                         <img
-                                            draggable="true"
                                             id="caixa"
                                             src="assets/caixa-removebg-preview.png"
                                             alt="Caixa"
@@ -176,13 +169,8 @@
                             </div>
                         </div>
 
-                        <div
-                            class="drag-section"
-                            id="drag-section"
-                            ondrop="drop(event)"
-                            ondragover="allowDrop(event)"
-                        >
-                            <h2>Drag the logo to the chart</h2>
+                        <div class="drop-section dp-section" id="drop-section">
+                            <h2 id="drag_text">Drag the logo to the chart</h2>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
@@ -190,6 +178,7 @@
                                 fill="currentColor"
                                 class="bi bi-arrow-down-left-square-fill"
                                 viewBox="0 0 16 16"
+                                id="arrow"
                             >
                                 <path
                                     d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm8.096-10.803L6 9.293V6.525a.5.5 0 0 0-1 0V10.5a.5.5 0 0 0 .5.5h3.975a.5.5 0 0 0 0-1H6.707l4.096-4.096a.5.5 0 1 0-.707-.707z"

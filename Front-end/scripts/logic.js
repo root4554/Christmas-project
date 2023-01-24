@@ -41,28 +41,69 @@ signInfoB.addEventListener("click", changeFormContent);
 const emptyDiv = (counter) => {
     console.log(counter);
     if (counter == 0) {
-        const div = document.querySelector(".drag-section");
+        const div = document.querySelector(".drop-section");
         div.innerHTML = "";
     }
+};
+
+//disable pointer events on drop section while draging
+const disablePointerEvents = () => {
+    const drop_containers = document.querySelectorAll(".dp-section");
+    drop_containers.forEach((container) => {
+        container.querySelectorAll("img").forEach((img) => {
+            img.style.pointerEvents = "none";
+        });
+    });
+    console.log("disable");
+};
+//enable pointer events on drop section after droping
+const enablePointerEvents = () => {
+    const drop_containers = document.querySelectorAll(".dp-section");
+    drop_containers.forEach((container) => {
+        container.querySelectorAll("img").forEach((img) => {
+            img.style.pointerEvents = "all";
+        });
+    });
+    console.log("enable");
 };
 
 // drag elements to a div
 let counter = 0;
 const allowDrop = (ev) => {
+    disablePointerEvents();
     ev.preventDefault();
+    console.log("allowDrop");
 };
 const drag = (ev) => {
     ev.dataTransfer.setData("text", ev.target.id);
+    console.log("drag");
 };
 const drop = (ev) => {
     emptyDiv(counter);
     ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
+    let data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
     counter++;
+    enablePointerEvents();
+    console.log("drop");
 };
 
 const images = document.querySelectorAll("img");
 images.forEach((image) => {
     image.addEventListener("dragstart", drag);
+});
+
+//transfer logo to drop section by click on image(for mobile use)
+const logoTranfer = (logo) => {
+    const drop_containers = document.querySelectorAll(".dp-section");
+    drop_containers.forEach((container) => {
+        container.appendChild(logo);
+    });
+};
+
+const dropDragDiv = document.querySelectorAll(".dp-section");
+dropDragDiv.forEach((div) => {
+    div.addEventListener("drop", drop);
+    div.addEventListener("dragover", allowDrop);
+    div.addEventListener("click", () => console.log("click"));
 });
