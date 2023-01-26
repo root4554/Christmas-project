@@ -231,8 +231,9 @@ insertStocksData(generateData);
 // };
 // generateData();
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////7////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
 // import mysql from "mysql2/promise";
 
 // const NOW = new Date(new Date().setSeconds(0));
@@ -248,18 +249,14 @@ insertStocksData(generateData);
 // const createDb = async () => {
 //     try {
 //         const con = await pool.getConnection();
-//         await con.query(
-//             "DROP TABLE IF EXISTS companies, stocks, real_time_stocks"
-//         );
+//         await con.query("DROP TABLE IF EXISTS companies, stocks cascade");
 //         await con.query(
 //             "CREATE TABLE companies (id INT PRIMARY KEY, name VARCHAR(255))"
 //         );
 //         await con.query(
 //             "CREATE TABLE stocks (id INT AUTO_INCREMENT PRIMARY KEY, company_id INT, price FLOAT, date DATETIME)"
 //         );
-//         await con.query(
-//             "ALTER TABLE stocks ADD FOREIGN KEY (company_id) REFERENCES companies(id)"
-//         );
+
 //         con.release();
 //     } catch (err) {
 //         console.log(err);
@@ -355,7 +352,7 @@ insertStocksData(generateData);
 
 // const insertCompanyData = async (id) => {
 //     const data = generateCompanyData(id);
-//     withConnection(async (con) => {
+//     await withConnection(async (con) => {
 //         const query = `INSERT INTO stocks (company_id, price, date) VALUES ?`;
 //         await con.query(query, [data]);
 //     });
@@ -367,4 +364,9 @@ insertStocksData(generateData);
 //     await Promise.all(inserts);
 // };
 
+// console.time("Benchmark");
+
+// await createDb();
 // await insertCompaniesData();
+
+// console.timeEnd("Benchmark");

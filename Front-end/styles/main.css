@@ -7,6 +7,10 @@
     font-family: myFirstFont;
     src: url("../assets/Aquire/Aquire-Light.otf");
 }
+:root {
+    --green: #30af62;
+    --red: #ea4c89;
+}
 .row {
     margin: 0 !important;
 }
@@ -25,7 +29,8 @@
     color: #fff;
 }
 .sign,
-form {
+form,
+.stocks {
     color: white;
     display: flex;
     flex-direction: column;
@@ -94,7 +99,7 @@ input {
     opacity: 1;
     font-weight: bolder;
 }
-/* main  */
+/* ********************* main *********************  */
 .slide-track {
     width: 100%;
     height: 15vh;
@@ -111,8 +116,13 @@ input {
     margin-right: 10px;
 }
 .slide img {
+    /* object-fit: cover; */
     height: 100%;
-    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .drop-section {
     width: 70%;
@@ -154,6 +164,111 @@ input {
     font-size: 20px;
     cursor: no-drop;
     padding: 5px 10px;
-    margin-bottom: 10vh;
+    margin-bottom: 8vh;
     opacity: 0.2;
+}
+
+/******************** second section ***************/
+.stocks,
+.stock-graphic,
+.graphic-header,
+.info,
+.showdata-option,
+.date-info,
+.stocks-info,
+.stock-card,
+.stock-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.stocks {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    align-content: space-evenly;
+}
+.stock-graphic {
+    width: 60%;
+    height: 80%;
+    border: 1px solid gray;
+    border-radius: 16px;
+    padding: 12px;
+    align-content: space-around;
+}
+.graphic-header {
+    height: 40%;
+    width: 100%;
+}
+.info {
+    width: 50%;
+    justify-content: space-around;
+}
+.showdata-option {
+    width: 50%;
+}
+.showdata-option select,
+.date-info button {
+    padding: 8px 14px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid grey;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.showdata-option option {
+    color: #000;
+}
+.date-info {
+    justify-content: space-evenly;
+    border-top: 1px solid grey;
+    width: 80%;
+    padding: 10px;
+}
+
+.graphic {
+    width: 90%;
+    height: 50%;
+    background-color: aqua;
+}
+
+.stocks-info {
+    width: 35%;
+    height: 80%;
+    border: 1px solid gray;
+    border-radius: 16px;
+    padding: 7px;
+    align-content: space-around;
+    align-content: baseline;
+}
+.info-title {
+    height: 90px;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    padding: 7px;
+}
+.stock-cards {
+    width: 100%;
+    height: 80%;
+}
+.stock-card {
+    width: 90%;
+    height: 15%;
+    min-height: 70px;
+    /* border: 1px solid gray; */
+    padding: 7px;
+    align-content: space-around;
+    justify-content: space-between;
+}
+.stock-card .pic {
+    height: 80%;
+    width: 35%;
+}
+.stock-card img {
+    height: 100%;
+}
+.stock-card p {
+    margin: 0 !important;
 }

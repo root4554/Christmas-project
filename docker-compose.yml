@@ -24,14 +24,11 @@ services:
             - sail
         depends_on:
             - mysql
-            # - redis
-            # - meilisearch
-            # - mailhog
-            # - selenium
+
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
+            - 3306:3306
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ROOT_HOST: "%"
@@ -51,46 +48,7 @@ services:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
-    # redis:
-    #     image: 'redis:alpine'
-    #     ports:
-    #         - '${FORWARD_REDIS_PORT:-6379}:6379'
-    #     volumes:
-    #         - 'sail-redis:/data'
-    #     networks:
-    #         - sail
-    #     healthcheck:
-    #         test: ["CMD", "redis-cli", "ping"]
-    #         retries: 3
-    #         timeout: 5s
-    # meilisearch:
-    #     image: 'getmeili/meilisearch:latest'
-    #     ports:
-    #         - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
-    #     volumes:
-    #         - 'sail-meilisearch:/meili_data'
-    #     networks:
-    #         - sail
-    #     healthcheck:
-    #         test: ["CMD", "wget", "--no-verbose", "--spider",  "http://localhost:7700/health"]
-    #         retries: 3
-    #         timeout: 5s
-    # mailhog:
-    #     image: 'mailhog/mailhog:latest'
-    #     ports:
-    #         - '${FORWARD_MAILHOG_PORT:-1025}:1025'
-    #         - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
-    #     networks:
-    #         - sail
-    # selenium:
-    #     image: 'selenium/standalone-chrome'
-    #     extra_hosts:
-    #         - 'host.docker.internal:host-gateway'
-    #     volumes:
-    #         - '/dev/shm:/dev/shm'
-    #     networks:
-    #         - sail
-
+    
     # Add a database management tool like phpMyAdmin
             
     phpmyadmin:
@@ -127,7 +85,7 @@ services:
         image: 'nginx:latest'
         volumes:
             - '.:/var/www/html'
-        #    - ./nginx:/etc/nginx/conf.d
+            - ./nginx:/etc/nginx/conf.d
         networks:
             - sail
         ports:
@@ -136,14 +94,18 @@ services:
     # Add a local Node database data generater project
     node:
         depends_on:
-            - laravel.test
-        build:  .
-            # context: ./data-generator
+            # - laravel.test
+            - mysql
+        build:  
+            context: ./data-generator
             # dockerfile: Dockerfile
+            
+        #command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; npm start'
         networks:
             - sail
-        ports:
-            - 8003:80
+        # volumes:
+        #     - ./data-generator:/generator
+
             
 networks:
     sail:
@@ -151,7 +113,4 @@ networks:
 volumes:
     sail-mysql:
         driver: local
-    # sail-redis:
-    #     driver: local
-    # sail-meilisearch:
-    #     driver: local
+

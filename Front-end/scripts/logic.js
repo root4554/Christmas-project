@@ -66,6 +66,14 @@ const enablePointerEvents = () => {
     });
     console.log("enable");
 };
+const changeBorder = (dotted) => {
+    const container = document.querySelector(".dp-section");
+    if (dotted == true) {
+        container.style.border = "2px dashed white";
+    } else {
+        container.style.border = "none";
+    }
+};
 
 // drag elements to a div
 let counter = 0;
@@ -73,10 +81,10 @@ const allowDrop = (ev) => {
     disablePointerEvents();
     ev.preventDefault();
     console.log("allowDrop");
+    changeBorder(true);
 };
 const drag = (ev) => {
     ev.dataTransfer.setData("text", ev.target.id);
-    console.log("drag");
 };
 const drop = (ev) => {
     emptyDiv(counter);
@@ -85,7 +93,8 @@ const drop = (ev) => {
     ev.target.appendChild(document.getElementById(data));
     counter++;
     enablePointerEvents();
-    console.log("drop");
+    changeBorder(false);
+    // console.log("drop");
 };
 
 const images = document.querySelectorAll("img");
@@ -107,3 +116,5 @@ dropDragDiv.forEach((div) => {
     div.addEventListener("dragover", allowDrop);
     div.addEventListener("click", () => console.log("click"));
 });
+
+///////////////////////////  localstorage  ///////////////////////////

@@ -92,79 +92,66 @@
                             </p>
                             <div class="slider">
                                 <div class="slide-track dp-section">
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="bbva"
-                                            src="assets/bbva-removebg-preview.png"
-                                            alt="bbva"
-                                            ondrop="return false;"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="cellnex"
-                                            src="assets/cellnex-removebg-preview.png"
-                                            alt="Cellnex"
-                                            ondrop="return false;"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="ferrovial"
-                                            src="assets/ferrovial-removebg-preview.png"
-                                            alt="Ferrovial"
-                                            ondrop="return false;"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="iberdrola"
-                                            src="assets/iberdrola-removebg-preview.png"
-                                            alt="Iberdrola"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="inditex"
-                                            src="assets/inditex-removebg-preview.png"
-                                            alt="Inditex"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="naturgy"
-                                            src="assets/Naturgy.svg.png"
-                                            alt="Naturgy"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="repsol"
-                                            src="assets/Repsol-Logo-500x283.png"
-                                            alt="Repsol"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="santander"
-                                            src="assets/santander-removebg-preview.png"
-                                            alt="Santander"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="telefonica"
-                                            src="assets/telefonica-logo.png"
-                                            alt="telefonica"
-                                        />
-                                    </div>
-                                    <div class="slide" draggable="true">
-                                        <img
-                                            id="caixa"
-                                            src="assets/caixa-removebg-preview.png"
-                                            alt="Caixa"
-                                        />
-                                    </div>
+                                    <img
+                                        id="bbva"
+                                        src="assets/bbva-removebg-preview.png"
+                                        alt="bbva"
+                                        ondrop="return false;"
+                                    />
+                                    <img
+                                        id="cellnex"
+                                        src="assets/cellnex-removebg-preview.png"
+                                        alt="Cellnex"
+                                        ondrop="return false;"
+                                    />
+                                    <img
+                                        id="ferrovial"
+                                        src="assets/ferrovial-removebg-preview.png"
+                                        alt="Ferrovial"
+                                        ondrop="return false;"
+                                    />
+
+                                    <img
+                                        id="iberdrola"
+                                        src="assets/iberdrola-removebg-preview.png"
+                                        alt="Iberdrola"
+                                    />
+
+                                    <img
+                                        id="inditex"
+                                        src="assets/inditex-removebg-preview.png"
+                                        alt="Inditex"
+                                    />
+
+                                    <img
+                                        id="naturgy"
+                                        src="assets/Naturgy.svg.png"
+                                        alt="Naturgy"
+                                    />
+
+                                    <img
+                                        id="repsol"
+                                        src="assets/Repsol-Logo-500x283.png"
+                                        alt="Repsol"
+                                    />
+
+                                    <img
+                                        id="santander"
+                                        src="assets/santander-removebg-preview.png"
+                                        alt="Santander"
+                                    />
+
+                                    <img
+                                        id="telefonica"
+                                        src="assets/telefonica-logo.png"
+                                        alt="telefonica"
+                                    />
+
+                                    <img
+                                        id="caixa"
+                                        src="assets/caixa-removebg-preview.png"
+                                        alt="Caixa"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -187,6 +174,67 @@
                         </div>
                         <div class="data-button">
                             <button id="data-button" disabled>Show data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stocks">
+                <div class="stock-graphic">
+                    <div class="graphic-header">
+                        <div class="info">
+                            <div class="Total-invest">
+                                <h3>Total invested</h3>
+                                <p id="total-invest">32549.23€</p>
+                            </div>
+                            <div class="today-value">
+                                <h3>Today's value</h3>
+                                <p id="today-value">103.88€</p>
+                            </div>
+                        </div>
+                        <div class="showdata-option">
+                            <select name="option" id="date-option">
+                                <option value="1">Today</option>
+                                <option value="2">last week</option>
+                                <option value="3">last month</option>
+                            </select>
+                        </div>
+                        <div class="date-info">
+                            <button>Today</button><button>Last week</button
+                            ><button>last month</button>
+                        </div>
+                    </div>
+                    <div class="graphic"></div>
+                </div>
+                <div class="stocks-info">
+                    <div class="info-title">
+                        <h4>Last transactions</h4>
+                    </div>
+                    <div class="stock-card">
+                        <div class="pic">
+                            <img
+                                src="assets/santander-removebg-preview.png"
+                                alt=""
+                            />
+                        </div>
+                        <div class="last-value">
+                            <p id="last-value">103.89€</p>
+                        </div>
+                        <div class="actual-value">
+                            <p id="actual-value">104.88€</p>
+                        </div>
+                    </div>
+                    <div class="stock-card">
+                        <div class="pic">
+                            <img
+                                src="assets/caixa-removebg-preview.png"
+                                alt=""
+                            />
+                        </div>
+                        <div class="last-value">
+                            <p id="last-value">103.89€</p>
+                        </div>
+                        <div class="actual-value">
+                            <p id="actual-value">104.88€</p>
                         </div>
                     </div>
                 </div>
