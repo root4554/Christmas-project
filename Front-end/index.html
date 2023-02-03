@@ -30,7 +30,7 @@
                 <div class="col-3 bg-dark menu">
                     <div class="sign w-100">
                         <h1 id="signInfoH">Sign up</h1>
-                        <form action="" class="sign-up">
+                        <form class="sign-up">
                             <label id="name-label" for="name">Name</label>
                             <input
                                 type="text"
@@ -61,9 +61,7 @@
                                 id="confirm-password"
                                 placeholder="Confirm your password"
                             />
-                            <button id="submit" type="submit">
-                                Create an account
-                            </button>
+                            <button id="submit">Create an account</button>
                         </form>
                         <div class="form-type">
                             <p id="signInfoP">Already a member?</p>
@@ -72,7 +70,7 @@
                     </div>
                 </div>
 
-                <div class="col-8 content">
+                <div class="col-9 content">
                     <div
                         data-bs-spy="scroll"
                         data-bs-target="#navbar-example3"
@@ -88,68 +86,68 @@
                             <p>
                                 <span>*</span>
                                 To show the companies stock prices click on the
-                                logo and drag it to the chart
+                                logo and drag it to show the chart
                             </p>
                             <div class="slider">
                                 <div class="slide-track dp-section">
                                     <img
                                         id="bbva"
-                                        src="assets/bbva-removebg-preview.png"
+                                        src="assets/bbva.png"
                                         alt="bbva"
                                         ondrop="return false;"
                                     />
                                     <img
                                         id="cellnex"
-                                        src="assets/cellnex-removebg-preview.png"
+                                        src="assets/cellnex.png"
                                         alt="Cellnex"
                                         ondrop="return false;"
                                     />
                                     <img
                                         id="ferrovial"
-                                        src="assets/ferrovial-removebg-preview.png"
+                                        src="assets/ferrovial.png"
                                         alt="Ferrovial"
                                         ondrop="return false;"
                                     />
 
                                     <img
                                         id="iberdrola"
-                                        src="assets/iberdrola-removebg-preview.png"
+                                        src="assets/iberdrola.png"
                                         alt="Iberdrola"
                                     />
 
                                     <img
                                         id="inditex"
-                                        src="assets/inditex-removebg-preview.png"
+                                        src="assets/inditex.png"
                                         alt="Inditex"
                                     />
 
                                     <img
                                         id="naturgy"
-                                        src="assets/Naturgy.svg.png"
+                                        src="assets/Naturgy.png"
                                         alt="Naturgy"
                                     />
 
                                     <img
                                         id="repsol"
-                                        src="assets/Repsol-Logo-500x283.png"
+                                        src="assets/Repsol.png"
                                         alt="Repsol"
                                     />
 
                                     <img
                                         id="santander"
-                                        src="assets/santander-removebg-preview.png"
+                                        src="assets/santander.png"
                                         alt="Santander"
                                     />
 
                                     <img
                                         id="telefonica"
-                                        src="assets/telefonica-logo.png"
+                                        src="assets/telefonica.png"
                                         alt="telefonica"
                                     />
 
                                     <img
                                         id="caixa"
-                                        src="assets/caixa-removebg-preview.png"
+                                        src="assets/caixa.png"
                                         alt="Caixa"
                                     />
                                 </div>
@@ -173,7 +171,7 @@
                             </svg>
                         </div>
                         <div class="data-button">
-                            <button id="data-button" disabled>Show data</button>
+                            <button id="data-btn">Show data</button>
                         </div>
                     </div>
                 </div>
@@ -211,10 +209,7 @@
                     </div>
                     <div class="stock-card">
                         <div class="pic">
-                            <img
-                                src="assets/santander-removebg-preview.png"
-                                alt=""
-                            />
+                            <img src="assets/santander.png" alt="" />
                         </div>
                         <div class="last-value">
                             <p id="last-value">103.89€</p>
@@ -225,10 +220,7 @@
                     </div>
                     <div class="stock-card">
                         <div class="pic">
-                            <img
-                                src="assets/caixa-removebg-preview.png"
-                                alt=""
-                            />
+                            <img src="assets/caixa.png" alt="" />
                         </div>
                         <div class="last-value">
                             <p id="last-value">103.89€</p>
@@ -241,5 +233,6 @@
             </div>
         </div>
         <script src="scripts/logic.js"></script>
+        <script src="scripts/Authorization.js"></script>
     </body>
 </html>

@@ -11,7 +11,8 @@ services:
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
-            - '${APP_PORT:-80}:80'
+            - 8000:80
+            # - '${APP_PORT:-8000}:80'
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         environment:
             WWWUSER: '${WWWUSER}'
@@ -20,6 +21,7 @@ services:
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
         volumes:
             - '.:/var/www/html'
+        # command: php artisan migrate 
         networks:
             - sail
         depends_on:
@@ -39,18 +41,18 @@ services:
         volumes:
             - 'sail-mysql:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
-        
-        #    Add a local database dump to be imported on startup
+
+            #    Add a local database dump to be imported on startup
             - './db:/docker-entrypoint-initdb.d'
         networks:
             - sail
         healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
             retries: 3
             timeout: 5s
-    
+
     # Add a database management tool like phpMyAdmin
-            
+
     phpmyadmin:
         depends_on:
             - mysql
@@ -63,20 +65,20 @@ services:
         networks:
             - sail
         ports:
-            - 8000:80
+            - 8080:80
         # - '${FORWARD_PHPMYADMIN_PORT:-8080}:80'
 
-    # Add a front-end server like Apache
-    apache:
-        depends_on:
-            - laravel.test
-        image: 'httpd:latest'
-        volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
-        ports:
-            - 8001:80
+        # Add a front-end server like Apache
+    # apache:
+    #     depends_on:
+    #         - laravel.test
+    #     image: 'httpd:latest'
+    #     volumes:
+    #         - '.:/var/www/html'
+    #     networks:
+    #         - sail
+    #     ports:
+    #         - 8001:80
 
     # Add a load balancer like Nginx
     nginx:
@@ -96,21 +98,20 @@ services:
         depends_on:
             # - laravel.test
             - mysql
-        build:  
+        build:
             context: ./data-generator
             # dockerfile: Dockerfile
-            
-        #command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; npm start'
+
+            #command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; npm start'
         networks:
             - sail
         # volumes:
         #     - ./data-generator:/generator
 
-            
+
 networks:
     sail:
         driver: bridge
 volumes:
     sail-mysql:
         driver: local
-

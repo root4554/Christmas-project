@@ -1,15 +1,15 @@
 const signInfoB = document.querySelector("#signInfoB");
 
-const changeFormContent = () => {
-    const form = document.querySelector("form");
-    const namelabel = document.querySelector("#name-label");
-    const nameinput = document.querySelector("#name");
-    const passlabel = document.querySelector("#password-label");
-    const passinput = document.querySelector("#confirm-password");
-    const signInfoH = document.querySelector("#signInfoH");
-    const submit = document.querySelector("#submit");
-    const signInfoP = document.querySelector("#signInfoP");
+const form = document.querySelector("form");
+const namelabel = document.querySelector("#name-label");
+const nameinput = document.querySelector("#name");
+const passlabel = document.querySelector("#password-label");
+const passinput = document.querySelector("#confirm-password");
+const signInfoH = document.querySelector("#signInfoH");
+const submit = document.querySelector("#submit");
+const signInfoP = document.querySelector("#signInfoP");
 
+const changeFormContent = () => {
     if (form.classList.contains("sign-up")) {
         form.classList.remove("sign-up");
         form.classList.add("sign-in");
@@ -39,7 +39,6 @@ signInfoB.addEventListener("click", changeFormContent);
 
 // empty the div
 const emptyDiv = (counter) => {
-    console.log(counter);
     if (counter == 0) {
         const div = document.querySelector(".drop-section");
         div.innerHTML = "";
@@ -54,7 +53,6 @@ const disablePointerEvents = () => {
             img.style.pointerEvents = "none";
         });
     });
-    console.log("disable");
 };
 //enable pointer events on drop section after droping
 const enablePointerEvents = () => {
@@ -64,7 +62,6 @@ const enablePointerEvents = () => {
             img.style.pointerEvents = "all";
         });
     });
-    console.log("enable");
 };
 const changeBorder = (dotted) => {
     const container = document.querySelector(".dp-section");
@@ -80,7 +77,6 @@ let counter = 0;
 const allowDrop = (ev) => {
     disablePointerEvents();
     ev.preventDefault();
-    console.log("allowDrop");
     changeBorder(true);
 };
 const drag = (ev) => {
@@ -94,7 +90,6 @@ const drop = (ev) => {
     counter++;
     enablePointerEvents();
     changeBorder(false);
-    // console.log("drop");
 };
 
 const images = document.querySelectorAll("img");
@@ -114,7 +109,68 @@ const dropDragDiv = document.querySelectorAll(".dp-section");
 dropDragDiv.forEach((div) => {
     div.addEventListener("drop", drop);
     div.addEventListener("dragover", allowDrop);
-    div.addEventListener("click", () => console.log("click"));
 });
 
 ///////////////////////////  localstorage  ///////////////////////////
+const checkStoredCompanies = () => {
+    let cont = document.querySelector(".slide-track");
+    let companies = JSON.parse(localStorage.getItem("companies"));
+    if (companies) {
+        if (companies.length > 0) {
+            emptyDiv(counter);
+            counter++;
+        }
+        for (let i = 0; i < companies.length; i++) {
+            const company = document.querySelector(`#${companies[i]}`);
+            logoTranfer(company);
+        }
+    }
+};
+document.onload = checkStoredCompanies();
+
+const storeCompanies = () => {
+    let selectedcompanies = document
+        .querySelector("#drop-section")
+        .querySelectorAll("img");
+    let companies = [];
+    for (let i = 0; i < selectedcompanies.length; i++) {
+        companies.push(selectedcompanies[i].id);
+    }
+    localStorage.setItem("companies", JSON.stringify(companies));
+    // return companies;
+};
+document.querySelector("#data-btn").addEventListener("click", storeCompanies);
+
+///////////////////////// showing the selected companies /////////////////////////
+
+const showCompanies = () => {
+    let companies = JSON.parse(localStorage.getItem("companies"));
+    if (companies) {
+        const div = document.querySelector(".stocks-info");
+        div.querySelectorAll(".stock-card").forEach((card) => {
+            card.remove();
+        });
+
+        for (let i = 0; i < companies.length; i++) {
+            // const company = document.querySelector(`#${companies[i]}`);
+            const company = `<div class="stock-card">
+            <div class="pic">
+                <img
+                    src="assets/${companies[i]}.png"
+                    alt=""
+                />
+            </div>
+            <div class="last-value">
+                <p id="last-value">103.89€</p>
+            </div>
+            <div class="actual-value">
+                <p id="actual-value">104.88€</p>
+            </div>
+        </div>`;
+            div.innerHTML += company;
+        }
+    }
+};
+
+document.querySelector("#data-btn").addEventListener("click", showCompanies);
+document.onload = showCompanies();

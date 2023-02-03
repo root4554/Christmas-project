@@ -2,8 +2,8 @@ import mysql from "mysql2/promise";
 import cron from "node-cron";
 
 const pool = mysql.createPool({
-    // host: "mysql",
-    host: "127.0.0.1",
+    host: "mysql",
+    // host: "127.0.0.1",
     user: "sail",
     password: "password",
     database: "stock_exchange",
@@ -40,7 +40,7 @@ const createDb = async () => {
 };
 
 const insertCompanies = async () => {
-    await createDb();
+    // await createDb();
 
     try {
         const con = await pool.getConnection();
@@ -91,7 +91,7 @@ const getCompaniesCount = async () => {
 
 const insertStockData = async () => {
     let seed = 100;
-    await insertCompanies();
+    // await insertCompanies();
     const con = await pool.getConnection();
     let currentDate = new Date();
     let lastMonth = new Date();
@@ -141,10 +141,9 @@ const insertRealTimeStock = async () => {
     const con = await pool.getConnection();
     const insertRealTimeStock = `INSERT INTO real_time_stocks (company_id, price, date, time) VALUES ?`;
     const inserts = [];
+    let seed = 100;
     let count = await getCompaniesCount();
     for (let j = 0; j < count; j++) {
-        let seed = await selectLastData(j + 1);
-        seed = seed[1][0].price;
         console.log("Last price of id " + j + " " + seed);
         let company_id = j + 1;
         seed = f(seed);
@@ -157,7 +156,7 @@ const insertRealTimeStock = async () => {
     console.log("Real time stocks inserted...");
 };
 const insertAllData = async () => {
-    await insertStockData();
+    // await insertStockData();
     cron.schedule("*/1 * * * *", async () => {
         insertRealTimeStock();
     });
