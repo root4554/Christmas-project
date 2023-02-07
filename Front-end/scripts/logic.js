@@ -1,3 +1,16 @@
+// let companiesID = {
+//     bbva: 1,
+//     santander: 2,
+//     repsol: 3,
+//     iberdrola: 4,
+//     inditex: 5,
+//     caixabank: 6,
+//     cellnex: 7,
+//     naturgy: 8,
+//     telefonica: 9,
+//     ferrovial: 10,
+// };
+
 const signInfoB = document.querySelector("#signInfoB");
 
 const form = document.querySelector("form");
@@ -11,6 +24,7 @@ const signInfoP = document.querySelector("#signInfoP");
 
 const changeFormContent = () => {
     if (form.classList.contains("sign-up")) {
+        console.log("sign in form");
         form.classList.remove("sign-up");
         form.classList.add("sign-in");
         namelabel.classList.add("hidden");
@@ -22,6 +36,7 @@ const changeFormContent = () => {
         signInfoP.innerHTML = "Don't have an account?";
         signInfoB.innerHTML = "Sign Up";
     } else {
+        console.log("sign up form");
         form.classList.remove("sign-in");
         form.classList.add("sign-up");
         namelabel.classList.remove("hidden");
@@ -121,7 +136,7 @@ const checkStoredCompanies = () => {
             counter++;
         }
         for (let i = 0; i < companies.length; i++) {
-            const company = document.querySelector(`#${companies[i]}`);
+            const company = document.querySelector(`.${companies[i].name}`);
             logoTranfer(company);
         }
     }
@@ -134,7 +149,10 @@ const storeCompanies = () => {
         .querySelectorAll("img");
     let companies = [];
     for (let i = 0; i < selectedcompanies.length; i++) {
-        companies.push(selectedcompanies[i].id);
+        companies.push({
+            name: selectedcompanies[i].className,
+            id: selectedcompanies[i].id,
+        });
     }
     localStorage.setItem("companies", JSON.stringify(companies));
     // return companies;
@@ -153,10 +171,11 @@ const showCompanies = () => {
 
         for (let i = 0; i < companies.length; i++) {
             // const company = document.querySelector(`#${companies[i]}`);
-            const company = `<div class="stock-card">
+            const company = `<div class="stock-card" companyId="${companies[i].id}">
             <div class="pic">
                 <img
-                    src="assets/${companies[i]}.png"
+                    id="${companies[i].id}"
+                    src="assets/${companies[i].name}.png"
                     alt=""
                 />
             </div>
@@ -169,6 +188,11 @@ const showCompanies = () => {
         </div>`;
             div.innerHTML += company;
         }
+        document.querySelectorAll(".stock-card").forEach((card) => {
+            card.addEventListener("click", () => {
+                getStockData(card);
+            });
+        });
     }
 };
 

@@ -3,7 +3,7 @@ version: '3'
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.1
+            context: .
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -19,9 +19,8 @@ services:
             LARAVEL_SAIL: 1
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-        volumes:
-            - '.:/var/www/html'
-        # command: php artisan migrate 
+        # volumes:
+        #     - '.:/var/www/html:cached'
         networks:
             - sail
         depends_on:
@@ -69,18 +68,18 @@ services:
         # - '${FORWARD_PHPMYADMIN_PORT:-8080}:80'
 
         # Add a front-end server like Apache
-    # apache:
-    #     depends_on:
-    #         - laravel.test
-    #     image: 'httpd:latest'
-    #     volumes:
-    #         - '.:/var/www/html'
-    #     networks:
-    #         - sail
-    #     ports:
-    #         - 8001:80
+        # apache:
+        #     depends_on:
+        #         - laravel.test
+        #     image: 'httpd:latest'
+        #     volumes:
+        #         - '.:/var/www/html'
+        #     networks:
+        #         - sail
+        #     ports:
+        #         - 8001:80
 
-    # Add a load balancer like Nginx
+        # Add a load balancer like Nginx
     nginx:
         depends_on:
             - laravel.test
@@ -96,7 +95,7 @@ services:
     # Add a local Node database data generater project
     node:
         depends_on:
-            # - laravel.test
+            - laravel.test
             - mysql
         build:
             context: ./data-generator

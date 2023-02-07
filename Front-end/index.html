@@ -21,6 +21,7 @@
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <!-- // -->
         <link rel="stylesheet" href="styles/main.css" />
     </head>
@@ -30,13 +31,17 @@
                 <div class="col-3 bg-dark menu">
                     <div class="sign w-100">
                         <h1 id="signInfoH">Sign up</h1>
-                        <form class="sign-up">
+                        <form
+                            class="sign-up"
+                            onsubmit="event.preventDefault(); log();"
+                        >
                             <label id="name-label" for="name">Name</label>
                             <input
                                 type="text"
                                 name="name"
                                 id="name"
                                 placeholder="Enter your name"
+                                required
                             />
                             <label for="email">Email</label>
                             <input
@@ -44,6 +49,7 @@
                                 name="email"
                                 id="email"
                                 placeholder="Enter your email"
+                                required
                             />
                             <label for="password">Password</label>
                             <input
@@ -51,6 +57,7 @@
                                 name="password"
                                 id="password"
                                 placeholder="Enter your password"
+                                required
                             />
                             <label id="password-label" for="confirm-password"
                                 >Confirm Password</label
@@ -60,6 +67,7 @@
                                 name="confirm-password"
                                 id="confirm-password"
                                 placeholder="Confirm your password"
+                                required
                             />
                             <button id="submit">Create an account</button>
                         </form>
@@ -91,64 +99,74 @@
                             <div class="slider">
                                 <div class="slide-track dp-section">
                                     <img
-                                        id="bbva"
+                                        id="1"
                                         src="assets/bbva.png"
                                         alt="bbva"
+                                        class="bbva"
                                         ondrop="return false;"
                                     />
                                     <img
-                                        id="cellnex"
+                                        id="7"
                                         src="assets/cellnex.png"
                                         alt="Cellnex"
+                                        class="cellnex"
                                         ondrop="return false;"
                                     />
                                     <img
-                                        id="ferrovial"
+                                        id="10"
                                         src="assets/ferrovial.png"
                                         alt="Ferrovial"
+                                        class="ferrovial"
                                         ondrop="return false;"
                                     />
 
                                     <img
-                                        id="iberdrola"
+                                        id="4"
                                         src="assets/iberdrola.png"
                                         alt="Iberdrola"
+                                        class="iberdrola"
                                     />
 
                                     <img
-                                        id="inditex"
+                                        id="5"
                                         src="assets/inditex.png"
                                         alt="Inditex"
+                                        class="inditex"
                                     />
 
                                     <img
-                                        id="naturgy"
+                                        id="8"
                                         src="assets/Naturgy.png"
                                         alt="Naturgy"
+                                        class="naturgy"
                                     />
 
                                     <img
-                                        id="repsol"
+                                        id="3"
                                         src="assets/Repsol.png"
                                         alt="Repsol"
+                                        class="repsol"
                                     />
 
                                     <img
-                                        id="santander"
+                                        id="2"
                                         src="assets/santander.png"
                                         alt="Santander"
+                                        class="santander"
                                     />
 
                                     <img
-                                        id="telefonica"
+                                        id="9"
                                         src="assets/telefonica.png"
                                         alt="telefonica"
+                                        class="telefonica"
                                     />
 
                                     <img
-                                        id="caixa"
+                                        id="6"
                                         src="assets/caixa.png"
-                                        alt="Caixa"
+                                        alt="Caixanbank"
+                                        class="caixabank"
                                     />
                                 </div>
                             </div>
@@ -191,9 +209,9 @@
                         </div>
                         <div class="showdata-option">
                             <select name="option" id="date-option">
-                                <option value="1">Today</option>
-                                <option value="2">last week</option>
-                                <option value="3">last month</option>
+                                <option value="day">Today</option>
+                                <option value="week">last week</option>
+                                <option value="month">last month</option>
                             </select>
                         </div>
                         <div class="date-info">
@@ -201,38 +219,19 @@
                             ><button>last month</button>
                         </div>
                     </div>
-                    <div class="graphic"></div>
+                    <div class="graphic">
+                        <div id="chart"></div>
+                    </div>
                 </div>
                 <div class="stocks-info">
                     <div class="info-title">
                         <h4>Last transactions</h4>
-                    </div>
-                    <div class="stock-card">
-                        <div class="pic">
-                            <img src="assets/santander.png" alt="" />
-                        </div>
-                        <div class="last-value">
-                            <p id="last-value">103.89€</p>
-                        </div>
-                        <div class="actual-value">
-                            <p id="actual-value">104.88€</p>
-                        </div>
-                    </div>
-                    <div class="stock-card">
-                        <div class="pic">
-                            <img src="assets/caixa.png" alt="" />
-                        </div>
-                        <div class="last-value">
-                            <p id="last-value">103.89€</p>
-                        </div>
-                        <div class="actual-value">
-                            <p id="actual-value">104.88€</p>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <script src="scripts/logic.js"></script>
         <script src="scripts/Authorization.js"></script>
+        <script src="scripts/Stock-data.js"></script>
     </body>
 </html>
