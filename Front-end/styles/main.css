@@ -169,7 +169,7 @@ input {
     border: none !important;
 }
 .btn {
-    cursor: default;
+    cursor: default !important;
 }
 .inf {
     opacity: 0.7;
