@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StocksController;
+use App\Http\Controllers\Real_time_stocksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,14 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(StocksController::class)->group(function () {
     Route::get('stocks', 'index');
-    Route::get('stock/{id}', 'show');
+    Route::get('stocks/{id}', 'show');
+    Route::get('stocks/{id}/lastday', 'showLastDay');
+    Route::get('stocks/{id}/lastweek', 'showLastWeek');
+});
+
+Route::controller(Real_time_stocksController::class)->group(function () {
+    Route::get('real_time_stocks', 'index');
+    Route::get('real_time_stock/{id}', 'show');
+    Route::get('real_time_stock/{id}/lastminute', 'showLastMinute');
+    // Route::get('real_time_stock/{id}/{date}', 'showLastDay');
 });

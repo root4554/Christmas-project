@@ -24,7 +24,7 @@ const signInfoP = document.querySelector("#signInfoP");
 
 const changeFormContent = () => {
     if (form.classList.contains("sign-up")) {
-        console.log("sign in form");
+        // console.log("sign in form");
         form.classList.remove("sign-up");
         form.classList.add("sign-in");
         namelabel.classList.add("hidden");
@@ -36,7 +36,7 @@ const changeFormContent = () => {
         signInfoP.innerHTML = "Don't have an account?";
         signInfoB.innerHTML = "Sign Up";
     } else {
-        console.log("sign up form");
+        // console.log("sign up form");
         form.classList.remove("sign-in");
         form.classList.add("sign-up");
         namelabel.classList.remove("hidden");
@@ -144,6 +144,7 @@ const checkStoredCompanies = () => {
 document.onload = checkStoredCompanies();
 
 const storeCompanies = () => {
+    document.querySelector("#scrl").style.display = "block";
     let selectedcompanies = document
         .querySelector("#drop-section")
         .querySelectorAll("img");
@@ -158,6 +159,13 @@ const storeCompanies = () => {
     // return companies;
 };
 document.querySelector("#data-btn").addEventListener("click", storeCompanies);
+
+// remove scrollicnon on scroll
+const removeScrollIcon = () => {
+    document.querySelector("#scrl").style.display = "none";
+};
+document.querySelector("body").addEventListener("scroll", removeScrollIcon);
+document.querySelector("body").addEventListener("wheel", removeScrollIcon);
 
 ///////////////////////// showing the selected companies /////////////////////////
 
@@ -180,17 +188,18 @@ const showCompanies = () => {
                 />
             </div>
             <div class="last-value">
-                <p id="last-value">103.89€</p>
+                <p id="last-value">---- €</p>
             </div>
             <div class="actual-value">
-                <p id="actual-value">104.88€</p>
+                <p id="actual-value">---- €</p>
             </div>
         </div>`;
             div.innerHTML += company;
         }
         document.querySelectorAll(".stock-card").forEach((card) => {
             card.addEventListener("click", () => {
-                getStockData(card);
+                createCompanyChart(card);
+                getTotalInvestmentData(card);
             });
         });
     }

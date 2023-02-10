@@ -1,3 +1,9 @@
+const getIp = () => {
+    return location.host;
+};
+const ip = getIp();
+// console.log(ip);
+
 const sign = document.querySelector(".sign");
 const formType = document.querySelector(".form-type");
 
@@ -25,7 +31,7 @@ const getformInfo = (type) => {
     }
 };
 const showErrorAlert = (response) => {
-    if (response == null) {
+    if (response.status == "error") {
         changeFormContent();
         alert(
             "Please fill all the fields correctly and check if the email is already used"
@@ -56,10 +62,15 @@ const showUser = () => {
         formType.style.display = "none";
         sign.innerHTML += `<div class="user">
         <img src="assets/av${random}.png" alt="">
-        <p>${response.user.name}</p>
-        <p>${response.user.email}</p>
-        <p>account created at: ${getDate(response.user.created_at)}</p>
-        <button class="logoutBtn" onclick="logout()">Log out</button>
+        <div class="circle"></div>
+        <p><span class="inf">Name : </span>${response.user.name}</p>
+        <p><span class="inf">Email : </span>${response.user.email}</p>
+        <p><span class="inf">Account created at :</span> ${getDate(
+            response.user.created_at
+        )}</p>
+        <button class="logoutBtn" onclick="logout()">
+        <img id="door" src="assets/logout.png" alt="">
+        Log out</button>
     </div>`;
     } else {
         //console.log("user is not logged in");
@@ -70,12 +81,21 @@ const showForm = () => {
     //console.log("show form");
     document.location.reload();
 };
+const activateDataBtn = () => {
+    let user = JSON.parse(localStorage.getItem("response"));
+    if (user != null && user.status == "success") {
+        document.querySelector("#data-btn").style.opacity = "1";
+        document.querySelector("#data-btn").style.cursor = "pointer";
+    }
+};
 
 const logToUser = (response) => {
     //console.log("log to user");
     if (response.status == "success") {
         storeUser(response);
         showUser();
+        activateDataBtn();
+        // getStock();
     }
 };
 
@@ -89,7 +109,7 @@ const signup = () => {
             ...getformInfo("signup"),
         }),
     };
-    fetch("/api/register", options)
+    fetch(`http://${ip}:8000/api/register`, options)
         .then((response) => response.json())
         .then((response) => logToUser(response))
         .catch((err) => console.error(err));
@@ -106,7 +126,7 @@ const login = () => {
         }),
     };
 
-    fetch("/api/login", options)
+    fetch(`http://${ip}:8000/api/login`, options)
         .then((response) => response.json())
         .then((response) => logToUser(response))
         .catch((err) => console.error(err));
@@ -134,41 +154,19 @@ const refresh = () => {
 
 // logout
 const logout = () => {
-    ////console.log("logout");
     const storedSession = JSON.parse(localStorage.getItem("response"));
     localStorage.removeItem("response");
-    localStorage.removeItem("companies");
     showForm();
-    // const options = {
-    //     method: "POST",
-    //     headers: {
-    //         Authorization:
-    //             "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTY3NDk0MDIwMywiZXhwIjoxNjc0OTQzODAzLCJuYmYiOjE2NzQ5NDAyMDMsImp0aSI6IkpVQVpXOW5IQzJFeE16WE8iLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.kUBt7zgpSZrz2hlhUNfGik2jhKwBfiC9tjnPvO9kU7g",
-    //     },
-    //     body: new URLSearchParams({
-    //         email: user[0].email,
-    //         password: user[0].password,
-    //     }),
-    // };
-    // fetch("/api/logout", options)
-    //     .then((response) => response.json())
-    //     .then((response) => ////console.log(response))
-    //     .catch((err) => console.error(err));
-
-    // removeUser();
-    // showUser();
+    // stop interval on logout
+    clearInterval(getCardsValues);
 };
 
 const log = () => {
-    ////console.log("log");
-
     let formType = document.querySelector("form");
     if (formType.classList.contains("sign-up")) {
-        ////console.log("signup type");
         signup();
     } else {
         login();
-        ////console.log("login type");
     }
 };
 
@@ -181,7 +179,6 @@ const SessionTimeOut = () => {
     let response = JSON.parse(localStorage.getItem("response"));
     let curentDate = new Date();
     let tokenDate = response.date;
-    // if the difference between the current date and the token date is greater than 1 hour, the user will be logged out
     if (curentDate - tokenDate > 36000) {
         logout();
     }

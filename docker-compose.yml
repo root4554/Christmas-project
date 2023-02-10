@@ -3,7 +3,7 @@ version: '3'
 services:
     laravel.test:
         build:
-            context: .
+            context: ./vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -19,8 +19,8 @@ services:
             LARAVEL_SAIL: 1
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-        # volumes:
-        #     - '.:/var/www/html:cached'
+        volumes:
+            - '.:/var/www/html'
         networks:
             - sail
         depends_on:
@@ -80,17 +80,6 @@ services:
         #         - 8001:80
 
         # Add a load balancer like Nginx
-    nginx:
-        depends_on:
-            - laravel.test
-        image: 'nginx:latest'
-        volumes:
-            - '.:/var/www/html'
-            - ./nginx:/etc/nginx/conf.d
-        networks:
-            - sail
-        ports:
-            - 8002:80
 
     # Add a local Node database data generater project
     node:
@@ -106,8 +95,45 @@ services:
             - sail
         # volumes:
         #     - ./data-generator:/generator
+    # api1:
+    #     build: .
+    #     volumes:
+    #         - .:/src/api
+    #     depends_on:
+    #         - mysql
+    #     networks:
+    #         - sail
 
+    # api2:
+    #     build: .
+    #     volumes:
+    #         - .:/src/api
+    #     depends_on:
+    #         - mysql
+    #     networks:
+    #         - sail
 
+    frontend:
+        build: ./Front-end
+        volumes:
+            - ./Front-end:/var/www/html
+        networks:
+            - sail
+
+    proxy:
+        image: 'nginx:latest'
+        volumes:
+            # - '.:/var/www/html'
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+        networks:
+            - sail
+        ports:
+            - 80:80
+        depends_on:
+            - laravel.test
+            # - api1
+            # - api2
+            - frontend
 networks:
     sail:
         driver: bridge

@@ -27,6 +27,7 @@
     padding: 0;
     padding-top: 30px;
     color: #fff;
+    background: #161819;
 }
 .sign,
 form,
@@ -91,8 +92,7 @@ input {
     justify-content: start;
 }
 .user img {
-    width: 20vw;
-    height: 20vw;
+    height: 9vw;
     border-radius: 50%;
     margin-bottom: 20px;
 }
@@ -105,12 +105,24 @@ input {
     position: absolute;
     bottom: 7vh;
 }
+#door {
+    height: 24px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+}
 .hidden {
     display: none;
+}
+.header,
+.logos p {
+    margin-left: 50px;
 }
 .header h1,
 .header p {
     font-family: myFirstFont !important;
+}
+.logos {
+    background-color: #161819;
 }
 .logos p {
     opacity: 0.7;
@@ -124,7 +136,7 @@ input {
 .slide-track {
     width: 100%;
     height: 15vh;
-    background: #000;
+    background: #161819;
     display: flex;
     overflow-y: hidden;
 }
@@ -145,12 +157,36 @@ input {
     margin-left: 10px;
     margin-right: 10px;
 }
+.stocks-info,
+.drop-section,
+.stock-graphic {
+    background: #212529;
+    border: none !important;
+}
+.blued {
+    background: #3669ff !important;
+    color: #fff;
+    border: none !important;
+}
+.btn {
+    cursor: default;
+}
+.inf {
+    opacity: 0.7;
+}
+.circle {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    background: var(--red);
+    position: relative;
+    bottom: 7%;
+    left: 10%;
+}
 .drop-section {
     width: 70%;
     height: 40vh;
-    background: #000;
     border-radius: 8px;
-    border: 1px solid #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,7 +206,11 @@ input {
     pointer-events: none;
 }
 .drop-section img {
-    width: 100px;
+    width: 20%;
+    cursor: grab;
+}
+.sp-secttion {
+    cursor: default;
 }
 .data-button {
     width: 80%;
@@ -183,7 +223,7 @@ input {
     border: none;
     border-radius: 5px;
     font-size: 20px;
-    /* cursor: no-drop; */
+    cursor: no-drop;
     padding: 5px 10px;
     margin-bottom: 8vh;
     opacity: 0.2;
@@ -209,7 +249,7 @@ input {
 .stocks {
     width: 100%;
     height: 100vh;
-    background-color: #000;
+    background-color: #161819;
     align-content: space-evenly;
 }
 .stock-graphic {
@@ -225,11 +265,11 @@ input {
     width: 100%;
 }
 .info {
-    width: 50%;
+    width: 60%;
     justify-content: space-around;
 }
 .showdata-option {
-    width: 50%;
+    width: 40%;
 }
 .showdata-option select,
 .date-info button {
@@ -251,8 +291,8 @@ input {
 }
 
 .graphic {
-    width: 90%;
-    height: 50%;
+    min-width: 90%;
+    min-height: 50%;
 }
 
 .stocks-info {
@@ -295,4 +335,162 @@ input {
 }
 .stock-card p {
     margin: 0 !important;
+}
+
+.graphic {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.actual-value {
+    display: flex;
+}
+
+.up {
+    display: block !important;
+    color: #21b4ff;
+    transform: rotate(180deg);
+    /* background-color: #21b4ff; */
+}
+.down {
+    display: block;
+    color: #ff5781;
+    /* background-color: #ff5781; */
+}
+
+.arrow {
+    width: 13px;
+    height: 13px;
+    margin-right: 5px;
+}
+
+.blue {
+    color: #21b4ff;
+}
+
+.red {
+    color: #ff5781;
+}
+
+.infos {
+    display: flex;
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ******************** scroll down ***************** */
+#scrl {
+    position: absolute;
+    right: 50%;
+    bottom: 1%;
+    display: none;
+}
+/* #mouse-scroll {
+    style: block;
+} */
+#mouse-scroll {
+    /* position: fixed; */
+    margin: auto;
+    left: 50%;
+    top: 80px;
+    -webkit-transform: translateX(-50%);
+    z-index: 9999;
+}
+#mouse-scroll span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    margin: 0 0 3px 5px;
+}
+#mouse-scroll .mouse {
+    height: 21px;
+    width: 14px;
+    border-radius: 10px;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    border: 2px solid #ffffff;
+    top: 170px;
+}
+#mouse-scroll .down-arrow-1 {
+    margin-top: 6px;
+}
+#mouse-scroll .down-arrow-1,
+#mouse-scroll .down-arrow-2,
+#mouse-scroll .down-arrow-3 {
+    -webkit-animation: mouse-scroll 1s infinite;
+    -moz-animation: mouse-scroll 1s infinite;
+}
+#mouse-croll .down-arrow-1 {
+    -webkit-animation-delay: 0.1s;
+    -moz-animation-delay: 0.1s;
+    -webkit-animation-direction: alternate;
+}
+#mouse-scroll .down-arrow-2 {
+    -webkit-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+    -webkit-animation-direction: alternate;
+}
+#mouse-scroll .down-arrow-3 {
+    -webkit-animation-delay: 0.3s;
+    -moz-animation-dekay: 0.3s;
+    -webkit-animation-direction: alternate;
+}
+#mouse-scroll .mouse-in {
+    height: 5px;
+    width: 2px;
+    display: block;
+    margin: 5px auto;
+    background: #ffffff;
+    position: relative;
+}
+#mouse-scroll .mouse-in {
+    -webkit-animation: animated-mouse 1.2s ease infinite;
+    moz-animation: mouse-animated 1.2s ease infinite;
+}
+
+@-webkit-keyframes animated-mouse {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(6px);
+        -ms-transform: translateY(6px);
+        transform: translateY(6px);
+    }
+}
+@-webkit-keyframes mouse-scroll {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes mouse-scroll {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
 }
